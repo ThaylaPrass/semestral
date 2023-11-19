@@ -1,0 +1,366 @@
+*{
+    margin:0;
+    padding:0;
+    /* background-image:url('Imagem/1.png'); */
+    /* background-image:url('/public/imagem/img.png'); */
+    background-position: top;
+    background-size: cover;
+    /* background-repeat: no-repeat; */
+    background-attachment: fixed;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+body{
+    background-image:url('/public/imagem/img.png');
+    background-position: top;
+    background-attachment: fixed;
+    background-color: black;
+    background-size: cover;
+    /* background-repeat: no-repeat; */
+    
+}
+
+
+/* ////////////////////css do projeto///////////////////// */
+header{
+    z-index: 999;
+    width: 100%;
+    height: 100px;
+    /* background-color: antiquewhite; */
+    /* background-image: url('/public/imagem/img2.png'); */
+    background-position: bottom;
+    background-size: cover;
+    background-attachment: fixed;
+    
+    padding: 0 10%;
+    position: fixed;
+    display: flex;
+    /* margin-bottom: 200px; */
+    background: #F1821D;
+    font-family: 'Inter', sans-serif;
+}
+
+header > .logo{
+   
+    /* height: auto; */
+    background-color: #080d0d4b;
+   
+    top: -50px;
+    /* background-color: aqua; */
+    background-image: url('/public/imagem/logo.png');
+    background-size: cover;
+    background-position: center;
+    
+}
+
+header .logo h1{
+    padding: 10px 15px;
+    font-size: 60px;
+    color: #0d1313;
+    /* background-color: grey; */
+}
+
+header .menu{
+    height: 100%;
+    /* background-color: grey; */
+    padding-top: 40px;
+    position: absolute;
+
+    right: 15%;
+    /* float: right; */
+}
+
+header .menu .ul_menu{
+    /* background-color: violet; */
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+header .menu .ul_menu li{
+    font-size: 25px;
+    background-color: #080d0d;
+    transition: 1s;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 8px;
+    color: #F1821D;
+    border: 1 px solid black;
+    /* color: #; */
+    /* font-family: 'Inter', sans-serif; */
+    font-weight: 400;
+}
+header .menu .ul_menu li:hover{
+    /* background-color: #f79c47; */
+    border: 1px solid rgb(240, 238, 238);
+    color: white;
+}
+
+.separador{
+    height: 200px;
+}
+
+/* ////////////////////////////// */
+
+.galeria{
+    display: flex;
+    /* background-color: #232557; */
+    /* width: 1000px; */
+    height: 700px;
+    width: 100%;
+    justify-content: center;
+    gap: 0;
+  }
+  
+  .galeria img{
+    height: 100%;
+    width: 105px;
+    object-fit: cover;
+    cursor: crosshair;
+    transition: 0.5s;
+    /* opacity: 0.5; */
+  }
+  .galeria img:hover{
+    width: 500px;
+    opacity: 1;
+  }
+
+  /* ////////////////////////// */
+
+  .sec_mostruario{
+    max-width:  80%;
+    margin-left: 10%;
+    min-height: 200px;
+    /* background-color: white; */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    justify-content: center;
+}
+
+.unidades{
+    width: 350px;
+    height: 550px;
+    /* background-color: rgb(214, 212, 212); */
+    border-radius: 8px;
+}
+
+.textoMostruario{
+    padding: 5px;
+    width: 100%;
+    text-align: justify;
+}
+
+.textoMostruario h1{
+    text-align: justify;
+    color: rgb(255, 252, 252);
+}
+
+
+/* /////PAINEL//// */
+
+.header-painel{
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(6, 155, 155);
+    color:white;
+}
+
+.form{
+    padding: 10px;
+    margin: 10px 0;
+    
+}
+
+.form input{
+    margin-bottom: 20px;
+    padding-left: 10px;
+    width: 100%;
+    height: 40px;
+    color: black;
+    border: 1px solid black;
+}
+
+
+.form input[type=submit]{
+    background-color: rgb(109, 141, 141);
+    width: 100%;
+    height: 40px;
+    border: 0;
+    cursor: pointer;
+    font-size: 30px;
+    color: aliceblue;
+}
+
+
+.box-lista{
+    width: 100%;
+    /* background-color: #0AACDC; */
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 20px 10px;
+}
+
+.lista-single{
+    /* width: 300px; */
+    display: flex;
+    /* padding-right: 30px; */
+    background-color: #200466;
+}
+
+.lista-single img{
+    width: 120px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.lista-single a{
+    background-color: white;
+    color: rgb(255, 0, 0);
+    font-size: 30px;
+}
+
+
+/* //////////////////////////////////////////////////////////
+QUEM SOMOS */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+  }
+  .content {
+    
+    /* background: rgba(0, 0, 0, 0.095); Cor do fundo com transparência */
+  }
+  .imagem_fundo {
+    flex: 1;
+    /* background-image: url('images/QuemSomos.png'); */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+  }
+  .texto {
+    font-size: 30px;
+    padding: 2% 50% 5% 5%;
+   text-align: left;
+    text-align: justify;
+    /* background-color: #200466; */
+  }
+  .titulo {
+    text-align: center;
+    font-size: 40px;
+    padding: 2% 5% 5% 5%;
+  }
+  .titulo h1{
+    text-align: center;
+    text-align: left;
+    font-size: 40px;
+  
+  }
+
+  /* ///////////////////////////////////////
+  formulario */
+  .titulo-formulario{
+    width: 100%;
+    text-align: center;
+}
+
+.container-formulario{
+    padding: 100px 0;
+    width: 90%;
+    /* background-color: aqua; */
+    margin-left: 5%;
+}
+
+.container-formulario > form{
+    width: 100%;
+    margin-left: 5%;
+
+}
+
+.container-formulario > form > input{
+    width: 90%;
+    height: 40px;
+    margin-top: 20px;
+    padding: 10px;
+}
+.container-formulario > form > textarea{
+    /* margin-left: 5%; */
+    width: 90%;
+    height: 200px;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.sub{
+    cursor: pointer;
+    width: 500px;
+}
+
+.imagem-cliente{
+    box-shadow: rgb(119, 119, 119) 10px 10px 10px;
+}
+
+footer{
+    width: 100%;
+    height: 200px;
+    /* background-color: ; */
+    border-top: 3 px solid white;
+}
+
+@media screen and (max-width: 900px) {
+    .galeria img:hover{
+        width: 220px;
+        opacity: 1;
+      }
+
+      .galeria{
+        display: flex;
+        /* background-color: #232557; */
+        /* width: 1000px; */
+        height: 400px;
+        width: 100%;
+        justify-content: center;
+        gap: 0;
+      }
+
+      .galeria img:nth-child(n+5) {
+        display: none;
+      }
+
+      .texto {
+        font-size: 30px;
+        padding: 2% 5% 20% 5%;
+       text-align: left;
+        text-align: justify;
+      }
+
+    
+      
+      .galeria img{
+        height: 100%;
+        width: 60px;
+        object-fit: cover;
+        cursor: crosshair;
+        transition: 0.5s;
+        /* opacity: 0.5; */
+      }
+}
+
+@media screen and (max-width: 600px) {
+    .separador{
+        height: 100px;
+    }
+
+    .logo{
+        display: none;
+        
+    }
+
+}
+

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel ADM</title>
+    <link href="/public/style.css" rel="stylesheet" />
+   
+</head>
+
+<body style="background-image: url('/public/imagem/preto.jpg');">
+    <!-- <div class="separador"></div> -->
+    <div class="nav">
+        <ul style="display: flex; float: right; margin-right: 10px; list-style: none;">
+            <li style="padding: 10px; background-color: white; color: black; cursor: pointer;"  id="btn-painel">Painel</li>
+            <li style="padding: 10px; background-color: white; color: black; cursor: pointer;" id="btn-clientes">Clientes</li>
+        </ul>
+    </div>
+    <div class="header-painel">
+        <h2>Galeria</h2>
+    </div>
+    <form class="form" enctype="multipart/form-data" method="post" action="/admin/cadastroGalery">
+        
+        <input type="file" name="arquivo" id="imagemInput">
+        <img id="imagemPreview" src="" alt="Preview da imagem" style="max-width: 200px; max-height: 200px;">
+        
+        <input type="submit" name="acao" value="Enviar">
+    </form>
+    <br>
+    <div class="header-painel">
+        <h2>lista Galeria</h2>
+    </div>
+    
+    
+    
+   
+
+    <div class="box-lista">
+        <%for(let i = 0; i < galeria.length; i++){ %>
+            <div class="lista-single"  >
+                <img src="<%= galeria[i].imagem %>" alt=""  >
+                <a href="/admin/deletarGalery/<%= galeria[i].id %>">(X)</a>
+            </div>
+            <% } %>
+        </div>
+        <div class="separador"></div>
+        <div class="header-painel">
+            <h2>Mostruario</h2>
+        </div>
+    <form class="form" enctype="multipart/form-data" method="post" action="/admin/cadastroMost">
+        <span>Texto</span>
+        <input type="text" name="textoMost" placeholder="Tipo">
+        <input type="file" name="arquivo" id="imagemInput">
+        <img id="imagemPreview" src="" alt="Preview da imagem" >
+        
+        <input type="submit" name="acao" value="Enviar">
+    </form>
+    <br>
+    <div class="header-painel">
+        <h2>lista Mostruario</h2>
+    </div>
+
+   
+
+   
+
+        <div class="box-lista">
+            <%for(let i = 0; i < mostruario.length; i++){ %>
+            <div class="lista-single"  >
+                <img  src="<%= mostruario[i].imagem %>" alt=""  >
+                <a href="/admin/deletarMost/<%= mostruario[i].id %>">(X)</a>
+            </div>
+            <% } %>
+        </div>
+            
+
+    <script>
+        function exibirPreview() {
+            const input = document.getElementById('imagemInput');
+            const preview = document.getElementById('imagemPreview');
+            
+            input.addEventListener('change', function() {
+                if (input.files && input.files[0]) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        preview.src = e.target.result;
+                    };
+                    
+                    reader.readAsDataURL(input.files[0]);
+                } else {
+                    preview.src = '';
+                }
+            });
+        }
+        
+        // Chame a função quando a página carregar
+        window.addEventListener('load', exibirPreview);
+
+        document.getElementById('btn-painel').addEventListener('click', function() {
+        // Redireciona o usuário para a rota desejada
+        window.location.href = '/admin/login';
+    });
+    document.getElementById('btn-clientes').addEventListener('click', function() {
+        // Redireciona o usuário para a rota desejada
+        window.location.href = '/admin/clientes';
+    });
+    </script>
+    </script>
+</body>
+</html>

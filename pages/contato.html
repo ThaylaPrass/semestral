@@ -1,0 +1,50 @@
+<%- include('partials/header.html') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="separador"></div>
+    <h1 class="titulo-formulario">ENTRE EM CONTATO</h1>
+    <div class="container-formulario">
+        <form class="form" enctype="multipart/form-data" method="post" action="/page/shareclientes">
+            <input type="text" name="nome" placeholder="Seu nome" required>
+            <input type="number" name="numero" placeholder="Seu contato" required>
+            <textarea name="texto" id="" placeholder="do que você precisa?" required></textarea>
+            <input type="file" name="arqcliente" required id="imagemEnviada">
+            
+            <img id="imgCliente" class="imagem-cliente" src="" alt=""  width="500px;">
+            <input type="submit" value="Enviar" style="cursor: pointer; width: 90%; padding: 5px;">
+        </form>
+    </div>
+
+    <script>
+        function exibirImagem() {
+            const input = document.getElementById('imagemEnviada');
+            const preview = document.getElementById('imgCliente');
+            
+            input.addEventListener('change', function() {
+                if (input.files && input.files[0]) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        preview.src = e.target.result;
+                    };
+                    
+                    reader.readAsDataURL(input.files[0]);
+                } else {
+                    preview.src = '';
+                }
+            });
+        }
+
+        // Chame a função quando a página carregar
+        window.addEventListener('load', exibirImagem);
+    </script>
+</body>
+</html>
+<%- include('partials/footer.html') %>

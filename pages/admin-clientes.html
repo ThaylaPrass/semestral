@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: black;">
+    <div class="nav">
+        <ul style="display: flex; float: right; margin-right: 10px; list-style: none;">
+            <li style="padding: 10px; background-color: white; color: black; cursor: pointer;"  id="btn-painel">Painel</li>
+            <li style="padding: 10px; background-color: white; color: black; cursor: pointer;" id="btn-clientes">Clientes</li>
+        </ul>
+    </div>
+    <div class="separador"></div>
+    
+    <div class="container-recebidos" style="width: 90%; margin-left: 5%; padding: 50px 0;">
+        <% for(let i = 0; i < recebidos.length; i++){ %>
+            <div style="background-color: white; padding: 2%;">
+
+                <h2>nome: <%= recebidos[i].nome %></h2>
+                <br>
+                <!-- <h3>numero: <%= recebidos[i].numero %></h3> -->
+                <span>Numero: </span><a href="https://wa.me/<%= recebidos[i].numero %>" target="_blank"><%= recebidos[i].numero %></a>
+                <br>
+                <p>descricao: <%= recebidos[i].descricao %></p>
+                <br>
+                 <% if(recebidos[i].imagem && recebidos[i].imagem.endsWith && recebidos[i].imagem.endsWith('.rar')) { %>
+                    <a href="<%= recebidos[i].imagem %>" download><img src="caminho_para_icone_rar.png" alt="RAR" width="50px">arquivo</a>
+                <% } else if(recebidos[i].imagem && recebidos[i].imagem.endsWith && recebidos[i].imagem.endsWith('.zip')) { %>
+                    <a href="<%= recebidos[i].imagem %>" download><img src="caminho_para_icone_zip.png" alt="ZIP" width="50px">arquivo</a>
+                <% } else { %>
+                    <img src="<%= recebidos[i].imagem %>" alt="" width="300px">
+                <% } %>
+            </div>
+        <br>
+        <br>
+        <br>
+        <% } %>
+    </div>
+    <script>
+        document.getElementById('btn-painel').addEventListener('click', function() {
+        // Redireciona o usuário para a rota desejada
+        window.location.href = '/admin/login';
+    });
+    document.getElementById('btn-clientes').addEventListener('click', function() {
+        // Redireciona o usuário para a rota desejada
+        window.location.href = '/admin/clientes';
+    });
+    </script>
+</body>
+</html>
