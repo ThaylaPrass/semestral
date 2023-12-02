@@ -20,8 +20,8 @@
         <h2>Galeria</h2>
     </div>
     <form class="form" enctype="multipart/form-data" method="post" action="/admin/cadastroGalery">
-        
-        <input type="file" name="arquivo" id="imagemInput">
+        <input type="text" name="link" placeholder="Link da imagem">
+        <!-- <input type="file" name="arquivo" id="imagemInput"> -->
         <img id="imagemPreview" src="" alt="Preview da imagem" style="max-width: 200px; max-height: 200px;">
         
         <input type="submit" name="acao" value="Enviar">
@@ -33,8 +33,8 @@
     
     
     
-   
-
+    
+    
     <div class="box-lista">
         <%for(let i = 0; i < galeria.length; i++){ %>
             <div class="lista-single"  >
@@ -47,12 +47,13 @@
         <div class="header-painel">
             <h2>Mostruario</h2>
         </div>
-    <form class="form" enctype="multipart/form-data" method="post" action="/admin/cadastroMost">
-        <span>Texto</span>
-        <input type="text" name="textoMost" placeholder="Tipo">
-        <input type="file" name="arquivo" id="imagemInput">
-        <img id="imagemPreview" src="" alt="Preview da imagem" >
-        
+        <form class="form" enctype="multipart/form-data" method="post" action="/admin/cadastroMost">
+            <span>Texto</span>
+            <input type="text" name="textoMost" placeholder="Tipo">
+            <input type="text" name="linkImg" placeholder="Link da imagem">
+            <!-- <input type="file" name="arquivo" id="imagemInput"> -->
+            <img id="imagemPreview" src="" alt="Preview da imagem" >
+            
         <input type="submit" name="acao" value="Enviar">
     </form>
     <br>

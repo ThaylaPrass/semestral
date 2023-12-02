@@ -18,15 +18,15 @@ mongoose.connect('mongodb+srv://davidbatistaa1:PkpANocvrY8M1OSd@cluster0.cb7zhkh
     console.log(err.message)
 })
 //////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////use body parser
+//////////////////////////////////////////////////////////
 const Galeria =  require('./galeria.js')
 const Mostruario =  require('./mostruario.js')
 const Recebidos =  require('./receber.js')
 
 
 
-app.use( bodyParser.json() );       // to support JSON-encoded bodies
-app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+app.use( bodyParser.json() );
+app.use(bodyParser.urlencoded({
     extended: true
 })); 
 
@@ -48,7 +48,6 @@ app.set('views', path.join(__dirname, '/pages'));
 
 
 app.get('/', (req, res) => {
-    // Consulte o modelo 'Galeria' para buscar dados da coleção 'galeria'
     Galeria.find({}).sort({ '_id': -1 }).exec(function (err, galeria) {
         if (err) {
             console.error(err);
@@ -72,7 +71,6 @@ app.get('/', (req, res) => {
                         }
                     });
 
-                    // Renderize a página com os dados da galeria e do mostruário
                     res.render('home', { galeria: galeriaData, mostruario: mostruarioData });
                 }
             });
@@ -86,7 +84,6 @@ app.get('/',(req,res)=>{
 
 
 app.get('/:slug',(req,res)=>{
-    //res.send(req.params.slug);
     
 })
 
@@ -112,28 +109,28 @@ app.post('/admin/login',(req,res)=>{
 
 
 app.post('/admin/cadastroGalery',(req,res)=>{
-    //proxima aula banco de dados
-    // console.log(req.body)
-    // console.log(req.files)
-    let formato = req.files.arquivo.name.split('.')
-    var imagem = ''
-    if(formato[formato.length - 1] == "jpeg"  ){
-        imagem = new Date().getTime()+'.jpeg'
-        req.files.arquivo.mv(__dirname+'/public/images/'+ imagem)
-    }else if( formato[formato.length - 1] == "png"){
-        imagem = new Date().getTime()+'.png'
-        req.files.arquivo.mv(__dirname+'/public/images/'+ imagem)
-        
-    }else if(formato[formato.length - 1] == "jpg"){
-        imagem = new Date().getTime()+'.jpg'
-        req.files.arquivo.mv(__dirname+'/public/images/'+ imagem)
-        
-    }else{
-        fs.unlinkSync(req.files.arquivo.tempFilePath)
+    
 
-    }
+    // let formato = req.files.arquivo.name.split('.')
+    // var imagem = ''
+    // if(formato[formato.length - 1] == "jpeg"  ){
+    //     imagem = new Date().getTime()+'.jpeg'
+    //     req.files.arquivo.mv(__dirname+'/public/images/'+ imagem)
+    // }else if( formato[formato.length - 1] == "png"){
+    //     imagem = new Date().getTime()+'.png'
+    //     req.files.arquivo.mv(__dirname+'/public/images/'+ imagem)
+        
+    // }else if(formato[formato.length - 1] == "jpg"){
+    //     imagem = new Date().getTime()+'.jpg'
+    //     req.files.arquivo.mv(__dirname+'/public/images/'+ imagem)
+        
+    // }else{
+    //     fs.unlinkSync(req.files.arquivo.tempFilePath)
+
+    // }
     Galeria.create({
-        imagem: 'http://localhost:5000/public/images/'+ imagem,
+        // imagem: 'http://localhost:5000/public/images/'+ imagem,
+        imagem: req.body.link,
         
     })
     
@@ -148,31 +145,32 @@ app.get('/admin/deletarGalery/:id',(req,res)=>{
    
 })
 app.post('/admin/cadastroMost',(req,res)=>{
-    //proxima aula banco de dados
-    // console.log(req.body)
-    // console.log(req.files)
-    let formato = req.files.arquivo.name.split('.')
-    var imagem = ''
-    if(formato[formato.length - 1] == "jpeg"  ){
-        imagem = new Date().getTime()+'.jpeg'
-        req.files.arquivo.mv(__dirname+'/public/images/'+ imagem)
-    }else if( formato[formato.length - 1] == "png"){
-        imagem = new Date().getTime()+'.png'
-        req.files.arquivo.mv(__dirname+'/public/images/'+ imagem)
-        
-    }else if(formato[formato.length - 1] == "jpg"){
-        imagem = new Date().getTime()+'.jpg'
-        req.files.arquivo.mv(__dirname+'/public/images/'+ imagem)
-        
-    }else{
-        fs.unlinkSync(req.files.arquivo.tempFilePath)
+    
 
-    }
+    // let formato = req.files.arquivo.name.split('.')
+    // var imagem = ''
+    // if(formato[formato.length - 1] == "jpeg"  ){
+    //     imagem = new Date().getTime()+'.jpeg'
+    //     req.files.arquivo.mv(__dirname+'/public/images/'+ imagem)
+    // }else if( formato[formato.length - 1] == "png"){
+    //     imagem = new Date().getTime()+'.png'
+    //     req.files.arquivo.mv(__dirname+'/public/images/'+ imagem)
+        
+    // }else if(formato[formato.length - 1] == "jpg"){
+    //     imagem = new Date().getTime()+'.jpg'
+    //     req.files.arquivo.mv(__dirname+'/public/images/'+ imagem)
+        
+    // }else{
+    //     fs.unlinkSync(req.files.arquivo.tempFilePath)
+
+    // }
    
     Mostruario.create({
         
         texto: req.body.textoMost,
-        imagem: 'http://localhost:5000/public/images/'+ imagem,
+        // imagem: 'http://localhost:5000/public/images/'+ imagem,
+        imagem: req.body.linkImg,
+        
     })
     res.redirect('/admin/login')
 })
@@ -185,9 +183,7 @@ app.get('/admin/deletarMost/:id',(req,res)=>{
 })
 
 app.post('/page/shareclientes',(req,res)=>{
-    //proxima aula banco de dados
-    // console.log(req.body)
-    // console.log(req.files)
+    
     let formato = req.files.arqcliente.name.split('.')
     var imagem = ''
     
@@ -204,7 +200,7 @@ app.post('/page/shareclientes',(req,res)=>{
     const formatoValido = formato[formato.length - 1];
     
     if (formatoValido && formatosDiretorios[formatoValido]) {
-        const extensao = formatoValido === 'jpeg' ? 'jpg' : formatoValido; // Padronizando jpeg para jpg
+        const extensao = formatoValido === 'jpeg' ? 'jpg' : formatoValido;
         imagem = new Date().getTime() + '.' + extensao;
         const diretorio = formatosDiretorios[formatoValido];
         req.files.arqcliente.mv(__dirname + diretorio + imagem);
@@ -216,12 +212,9 @@ app.post('/page/shareclientes',(req,res)=>{
             imagem: diretorio.includes('images') ? 'http://localhost:5000/public/images/' + imagem : null,
         });
 
-        const nomeUsuario = req.body.nome.replace(/\s/g, '_'); // Remove espaços e substitui por _
-    // const extensao = formatoValido === 'jpeg' ? 'jpg' : formatoValido; // Padronizando jpeg para jpg
-    const nomeArquivo = nomeUsuario + '_' + new Date().getTime() + '.' + extensao;
-    
-    // Restante do seu código permanece igual, mas ao invés de imagem = new Date().getTime() + '.' + extensao;
-    imagem = nomeArquivo;
+        const nomeUsuario = req.body.nome.replace(/\s/g, '_');
+        const nomeArquivo = nomeUsuario + '_' + new Date().getTime() + '.' + extensao;
+        imagem = nomeArquivo;
     
         res.redirect('/page/contato');
     } else {
@@ -229,30 +222,21 @@ app.post('/page/shareclientes',(req,res)=>{
             nome: req.body.nome,
             numero: req.body.numero,
             descricao: req.body.texto,
-            imagem: null, // Nenhuma imagem para arquivos não relacionados a imagem
+            imagem: null,
         });
     
         fs.unlinkSync(req.files.arqcliente.tempFilePath);
         res.redirect('/page/contato');
     }
-    // ... (código existente)
-
-// Se quiser personalizar o nome do arquivo com base no nome do usuário, por exemplo
-
-
-    
-
-   
   
 })
 
 app.get('/download/:nomeArquivo', function(req, res) {
     const nomeArquivo = req.params.nomeArquivo;
-    const caminhoArquivo = '/public/rar/' + nomeArquivo; // Substitua pelo caminho real do arquivo
+    const caminhoArquivo = '/public/rar/' + nomeArquivo;
 
     res.download(caminhoArquivo, nomeArquivo, function(err) {
         if (err) {
-            // Lidar com erros, se necessário
             res.status(404).send('Arquivo não encontrado');
         }
     });

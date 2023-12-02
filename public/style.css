@@ -150,11 +150,13 @@ header .menu .ul_menu li:hover{
 .textoMostruario{
     padding: 5px;
     width: 100%;
-    text-align: justify;
+    /* text-align: justify; */
+    
 }
 
 .textoMostruario h1{
-    text-align: justify;
+    text-align: center;
+    letter-spacing: 2px;
     color: rgb(255, 252, 252);
 }
 
@@ -336,8 +338,8 @@ footer{
       .texto {
         font-size: 30px;
         padding: 2% 5% 20% 5%;
-       text-align: left;
-        text-align: justify;
+       text-align: center;
+        /* text-align: justify; */
       }
 
     
